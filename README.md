@@ -69,6 +69,15 @@ An interactive version of the diagram is saved as [`reports/journey_sankey.html`
 4. **Evaluate landing pages with concurrent A/B splits.** Because site-wide conversion rises every year, comparing
    one period with another overstates newer pages.
 
+## Deliverables
+
+| File | Description |
+|---|---|
+| [`notebooks/customer_journey_sankey.ipynb`](notebooks/customer_journey_sankey.ipynb) | Complete analysis with outputs |
+| [`reports/Customer_Journey_Results.xlsx`](reports/Customer_Journey_Results.xlsx) | Excel workbook: summary sheet with key findings, plus conversion by source, landing-page summary and the fair comparison |
+| [`reports/journey_sankey.html`](reports/journey_sankey.html) | Interactive Sankey diagram (download and open in a browser) |
+| [`reports/figures/`](reports/figures), [`reports/tables/`](reports/tables) | Charts (PNG) and result tables (CSV) |
+
 ## Repository Structure
 
 ```text
@@ -76,10 +85,11 @@ customer-journey-sankey-analysis/
 ├── data/                    orders, products, sessions and page views (gzip) with data dictionary
 ├── notebooks/               customer_journey_sankey.ipynb (analysis with outputs)
 ├── reports/
+│   ├── Customer_Journey_Results.xlsx  (Excel results workbook)
 │   ├── journey_sankey.html  interactive Sankey diagram
 │   ├── figures/             Sankey, landing-page timeline, fair comparison
 │   └── tables/              conversion by source, landing pages, fair comparison (CSV)
-├── scripts/run_notebook.py  re-executes the notebook
+├── scripts/                 run_notebook.py, build_excel_report.py
 └── requirements.txt
 ```
 
@@ -87,7 +97,8 @@ customer-journey-sankey-analysis/
 
 ```bash
 pip install -r requirements.txt
-python scripts/run_notebook.py
+python scripts/run_notebook.py        # re-run the analysis, refresh figures and tables
+python scripts/build_excel_report.py  # rebuild the Excel workbook
 ```
 
 Exporting the static Sankey image uses Kaleido, which requires a local Chrome or Chromium installation.
